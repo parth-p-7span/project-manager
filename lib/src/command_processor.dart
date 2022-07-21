@@ -42,6 +42,7 @@ class CommandProcessor {
       stdout.writeln(HelpManuals.CREATE_HELP);
     } else {
       var name = command['name'];
+      Process.runSync('flutter', ['pub', 'add', 'rxdart']);
       Seven.create(name);
       stdout.writeln(Constants.SUCCESS);
     }
