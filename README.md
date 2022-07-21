@@ -14,7 +14,8 @@ flutter project as it works as a global command line tool for all of your projec
 dart pub global activate project_manager
 ```
 
-Run following command to add pub cache to system's environment/path variable. So that you can access `seven` command in every project. Note: execute this command eveytime when you open new ternimal.
+Run following command to add pub cache to system's environment/path variable. So that you can access `seven` command in every project. <br>
+Note: execute this command eveytime when you open new ternimal.
 
 ```shell
 export PATH="$PATH":"$HOME/.pub-cache/bin"
