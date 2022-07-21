@@ -1,7 +1,7 @@
 name: project_manager
-description: A sample command-line application.
+description: A CLI tool for creating boilerplate code for project.
 version: 0.0.1-beta.1
-# homepage: https://www.example.com
+homepage: https://github.com/parthp-7span/project-manager
 
 environment:
   sdk: '>=2.16.0 <3.0.0'
