@@ -16,6 +16,9 @@ class CommandProcessor {
         case 'create':
           processCreateCommand(rootCommand.command!);
           break;
+        case 'init':
+          processInitCommand();
+          break;
         default:
           stdout.writeln('No command found. Use seven --help to see available commands');
           break;
@@ -46,6 +49,11 @@ class CommandProcessor {
       Seven.create(name);
       stdout.writeln(Constants.SUCCESS);
     }
+  }
+
+  /// INIT COMMAND
+  void processInitCommand() async {
+    Seven.init();
   }
 
   void printInfo() => stdout.writeln(Constants.INFO);

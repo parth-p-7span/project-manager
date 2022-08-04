@@ -368,7 +368,7 @@ class _${name}PageState extends State<${name}Page> {
   }
 
   void createBaseFiles() async {
-    var base_event = '''
+    var baseEvent = '''
 class BaseEvent<T> {
   T? data;
 
@@ -379,7 +379,7 @@ class BaseEvent<T> {
 
   ''';
 
-    var base_ui_state = '''
+    var baseUiState = '''
 class BaseUiState<T> {
   /// Holds error if state is [UiState.error]
   dynamic error;
@@ -420,7 +420,7 @@ enum UiState {
 
   ''';
 
-    var base_bloc = """
+    var baseBloc = """
 import 'package:rxdart/rxdart.dart';
 import 'base_event.dart';
 import 'base_ui_state.dart';
@@ -446,49 +446,49 @@ abstract class BaseBloc {
 
   """;
 
-    var base_mapper = '''
+    var baseMapper = '''
 abstract class BaseMapper<T, V> {
   V map(T t);
 }
 
   ''';
 
-    final check_base_event =
+    final checkBaseEvent =
     await Directory('lib/base/base_event.dart').exists();
-    final check_ui_state =
+    final checkUiState =
     await Directory('lib/base/base_ui_state.dart').exists();
-    final check_bloc = await Directory('lib/base/base_bloc.dart').exists();
-    final check_mapper = await Directory('lib/base/base_mapper.dart').exists();
+    final checkBloc = await Directory('lib/base/base_bloc.dart').exists();
+    final checkMapper = await Directory('lib/base/base_mapper.dart').exists();
 
-    if (!check_base_event) {
+    if (!checkBaseEvent) {
       await File('lib/base/base_event.dart')
           .create(recursive: true)
           .then((File file) async {
-        await file.writeAsString(base_event);
+        await file.writeAsString(baseEvent);
       });
     }
 
-    if (!check_ui_state) {
+    if (!checkUiState) {
       await File('lib/base/base_ui_state.dart')
           .create(recursive: true)
           .then((File file) async {
-        await file.writeAsString(base_ui_state);
+        await file.writeAsString(baseUiState);
       });
     }
 
-    if (!check_bloc) {
+    if (!checkBloc) {
       await File('lib/base/base_bloc.dart')
           .create(recursive: true)
           .then((File file) async {
-        await file.writeAsString(base_bloc);
+        await file.writeAsString(baseBloc);
       });
     }
 
-    if (!check_mapper) {
+    if (!checkMapper) {
       await File('lib/base/base_mapper.dart')
           .create(recursive: true)
           .then((File file) async {
-        await file.writeAsString(base_mapper);
+        await file.writeAsString(baseMapper);
       });
     }
   }
