@@ -6,9 +6,8 @@ import 'package:project_manager/src/help_menuals.dart';
 import 'package:project_manager/src/utils.dart';
 import 'package:project_manager/project_manager.dart';
 
-
 class CommandProcessor {
-  void execute(ArgResults rootCommand){
+  void execute(ArgResults rootCommand) {
     if (rootCommand.command == null) {
       processArgs(rootCommand.arguments);
     } else {
@@ -19,11 +18,15 @@ class CommandProcessor {
         case 'init':
           processInitCommand();
           break;
-        default:
-          stdout.writeln('No command found. Use seven --help to see available commands');
+        case 'boost':
+          processBoostCommand(rootCommand.command!);
           break;
-          // exitWith(
-          //     'No command found. Use Spider --help to see available commands');
+        default:
+          stdout.writeln(
+              'No command found. Use seven --help to see available commands');
+          break;
+        // exitWith(
+        //     'No command found. Use Spider --help to see available commands');
       }
     }
   }
@@ -43,11 +46,29 @@ class CommandProcessor {
     checkFlutterProject();
     if (command.arguments.hasArg('help', 'h')) {
       stdout.writeln(HelpManuals.CREATE_HELP);
-    } else {
+    } else if (command.arguments.hasArg('name', 'n')) {
       var name = command['name'];
       Process.runSync('flutter', ['pub', 'add', 'rxdart']);
       Seven.create(name);
       stdout.writeln(Constants.SUCCESS);
+    } else {
+      stdout.writeln(HelpManuals.CREATE_HELP);
+    }
+  }
+
+  /// BOOST COMMAND
+  void processBoostCommand(ArgResults command) async {
+    checkFlutterProject();
+    if (command.arguments.hasArg('number', 'N')) {
+      Seven.boostNumber();
+      Process.runSync('flutter', ['pub', 'get']);
+      stdout.writeln(Constants.VERSION_UPDATED);
+    } else if (command.arguments.hasArg('version', 'V')) {
+      Seven.boostVersion();
+      Process.runSync('flutter', ['pub', 'get']);
+      stdout.writeln(Constants.VERSION_UPDATED);
+    } else {
+      stdout.writeln(HelpManuals.BOOST_HELP);
     }
   }
 
@@ -57,7 +78,6 @@ class CommandProcessor {
   }
 
   void printInfo() => stdout.writeln(Constants.INFO);
-
 }
 
 extension ArgExtension on List<String> {

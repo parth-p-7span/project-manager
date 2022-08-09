@@ -9,6 +9,9 @@
       <excludeFolder url="file://$MODULE_DIR$/parth/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/parth/build" />
       <excludeFolder url="file://$MODULE_DIR$/parth/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/lib/src/create_riverpod_template/parth/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/lib/src/create_riverpod_template/parth/build" />
+      <excludeFolder url="file://$MODULE_DIR$/lib/src/create_riverpod_template/parth/.dart_tool" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Dart SDK" level="project" />

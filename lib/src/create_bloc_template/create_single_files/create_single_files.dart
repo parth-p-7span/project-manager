@@ -1,46 +1,34 @@
 import 'dart:io';
 import 'package:mustache_template/mustache_template.dart';
+import 'package:project_manager/src/utils.dart';
 
 import 'single_files_constant.dart';
 
-class CreateSingleFiles{
+class CreateSingleFiles {
   final String name;
 
   CreateSingleFiles(this.name);
 
   void createFiles() async {
-    File('$name/lib/app_screens/app_screens.dart')
-        .create(recursive: true)
-        .then((File file) async {
-      await file.writeAsString(SingleFilesConstant.appScreens);
-    });
+    createFile('$name/lib/app_screens/app_screens.dart',
+        SingleFilesConstant.appScreens);
 
-    File('$name/lib/constants/app_constants.dart')
-        .create(recursive: true)
-        .then((File file) async {
-      await file.writeAsString(SingleFilesConstant.appConstants);
-    });
+    createFile('$name/lib/constants/app_constants.dart',
+        SingleFilesConstant.appConstants);
 
-    File('$name/lib/home/ui/home.dart')
-        .create(recursive: true)
-        .then((File file) async {
-      await file.writeAsString(SingleFilesConstant.homeUi);
-    });
+    createFile('$name/lib/home/ui/home.dart', '$name/lib/home/ui/home.dart');
 
-    File('$name/lib/preferences/preferences_manager.dart')
-        .create(recursive: true)
-        .then((File file) async {
-      await file.writeAsString(SingleFilesConstant.preferenceManager);
-    });
+    createFile('$name/lib/preferences/preferences_manager.dart',
+        SingleFilesConstant.preferenceManager);
 
-    File('$name/lib/splash_screen/splash_screen.dart')
-        .create(recursive: true)
-        .then((File file) async {
-      await file.writeAsString(Template(SingleFilesConstant.splashScreen).renderString(
-          {'package_name': name}));
-    });
+    createFile(
+        '$name/lib/splash_screen/splash_screen.dart',
+        Template(SingleFilesConstant.splashScreen)
+            .renderString({'package_name': name}));
 
-    await File('$name/lib/main.dart').writeAsString(
-        Template(SingleFilesConstant.mainDart).renderString({'package_name': name}));
+    createFile(
+        '$name/lib/main.dart',
+        Template(SingleFilesConstant.mainDart)
+            .renderString({'package_name': name}));
   }
 }

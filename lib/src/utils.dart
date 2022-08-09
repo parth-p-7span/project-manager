@@ -7,7 +7,6 @@ import 'package:path/path.dart' as p;
 void error(String msg, [StackTrace? stackTrace]) =>
     Logger('Seven').log(const Level('ERROR', 1100), msg, null, stackTrace);
 
-
 /// Checks whether the directory in which the command has been fired is a
 /// dart/flutter project or not. Exits with error message if it is not.
 void checkFlutterProject() {
@@ -22,4 +21,10 @@ void checkFlutterProject() {
 /// exits process with a message on command-line
 void exitWith(String msg, [StackTrace? stackTrace]) {
   ProcessTerminator.getInstance().terminate(msg, stackTrace);
+}
+
+void createFile(String path, String content) {
+  File(path).create(recursive: true).then((File file) async {
+    await file.writeAsString(content);
+  });
 }

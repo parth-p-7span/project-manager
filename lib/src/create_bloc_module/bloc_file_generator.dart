@@ -2,6 +2,7 @@
 
 /// Checks if you are awesome. Spoiler: you are.
 import 'dart:io';
+import 'package:project_manager/src/utils.dart';
 
 class BlocFileGenerator {
   String? capitalize(String? name) {
@@ -16,12 +17,7 @@ class ${name}Bloc{
   ${name}Bloc();
 }
 ''';
-
-    File('lib/$label/bloc/${label}_bloc.dart')
-        .create(recursive: true)
-        .then((File file) async {
-      await file.writeAsString(blocCode);
-    });
+    createFile('lib/$label/bloc/${label}_bloc.dart', blocCode);
   }
 
   void createEntityModel(String? label) {
@@ -35,12 +31,8 @@ class ${name}GraphQlEntity{
   }
 }
   ''';
-
-    File('lib/$label/model/entity/${label}_graphql_entity.dart')
-        .create(recursive: true)
-        .then((File file) async {
-      await file.writeAsString(entityModel);
-    });
+    createFile(
+        'lib/$label/model/entity/${label}_graphql_entity.dart', entityModel);
   }
 
   void createRequestModel(String? label) {
@@ -57,11 +49,8 @@ class Get${name}sRequest {
 
   ''';
 
-    File('lib/$label/model/request/get_${label}s_request.dart')
-        .create(recursive: true)
-        .then((File file) async {
-      await file.writeAsString(getRequestModel);
-    });
+    createFile(
+        'lib/$label/model/request/get_${label}s_request.dart', getRequestModel);
   }
 
   void createResponseModel(String? label) {
@@ -96,13 +85,8 @@ class Get${name}sGraphQlResponse {
   }
 } 
   """;
-
-    File('lib/$label/model/response/get_${label}s_graphql_response.dart')
-        .create(recursive: true)
-        .then((File file) async {
-      await file.writeAsString(responseModel);
-      // Stuff to do after file has been created...
-    });
+    createFile('lib/$label/model/response/get_${label}s_graphql_response.dart',
+        responseModel);
   }
 
   void createModel(String? label) {
@@ -118,12 +102,7 @@ class $name{
 }
   ''';
 
-    File('lib/$label/model/$label.dart')
-        .create(recursive: true)
-        .then((File file) async {
-      await file.writeAsString(modelCode);
-      // Stuff to do after file has been created...
-    });
+    createFile('lib/$label/model/$label.dart', modelCode);
 
     var modelDataCode = """
 import '$label.dart';
@@ -158,12 +137,7 @@ class ${name}sData{
 }
   """;
 
-    File('lib/$label/model/${label}s_data.dart')
-        .create(recursive: true)
-        .then((File file) async {
-      await file.writeAsString(modelDataCode);
-      // Stuff to do after file has been created...
-    });
+    createFile('lib/$label/model/${label}s_data.dart', modelDataCode);
   }
 
   void createMappers(String? label) {
@@ -184,11 +158,8 @@ class ${name}GraphQlEntityMapper
 }
     """;
 
-    File('lib/$label/mapper/${label}_graphql_entity_mapper.dart')
-        .create(recursive: true)
-        .then((File file) async {
-      await file.writeAsString(entityMapper);
-    });
+    createFile(
+        'lib/$label/mapper/${label}_graphql_entity_mapper.dart', entityMapper);
 
     var responseMapper = """
 import '../../../base/base_mapper.dart';
@@ -213,11 +184,8 @@ class ${name}GraphQlResponseMapper
 }
     """;
 
-    File('lib/$label/mapper/${label}_graphql_response_mapper.dart')
-        .create(recursive: true)
-        .then((File file) async {
-      await file.writeAsString(responseMapper);
-    });
+    createFile('lib/$label/mapper/${label}_graphql_response_mapper.dart',
+        responseMapper);
   }
 
   void createSource(String? label) {
@@ -235,17 +203,9 @@ class ${name}GraphQlSource{
 }
   ''';
 
-    File('lib/$label/source/${label}_graphql_request.dart')
-        .create(recursive: true)
-        .then((File file) async {
-      await file.writeAsString(request);
-    });
+    createFile('lib/$label/source/${label}_graphql_request.dart', request);
 
-    File('lib/$label/source/${label}_graphql_source.dart')
-        .create(recursive: true)
-        .then((File file) async {
-      await file.writeAsString(source);
-    });
+    createFile('lib/$label/source/${label}_graphql_source.dart', source);
   }
 
   void createState(String? label) {
@@ -274,12 +234,7 @@ class Get${name}sState extends BaseUiState<${name}sData> {
 }
   """;
 
-    File('lib/$label/state/get_${label}_state.dart')
-        .create(recursive: true)
-        .then((File file) async {
-      await file.writeAsString(getState);
-      // Stuff to do after file has been created...
-    });
+    createFile('lib/$label/state/get_${label}_state.dart', getState);
 
     var uiStateManager = """
 import '../repo/${label}_repo.dart';
@@ -290,12 +245,8 @@ class ${name}UiStateManager{
 }
     """;
 
-    File('lib/$label/state/${label}_ui_state_manager.dart')
-        .create(recursive: true)
-        .then((File file) async {
-      await file.writeAsString(uiStateManager);
-      // Stuff to do after file has been created...
-    });
+    createFile(
+        'lib/$label/state/${label}_ui_state_manager.dart', uiStateManager);
   }
 
   void createRepo(String? label) {
@@ -307,12 +258,7 @@ class ${name}Repo{
 }
     ''';
 
-    File('lib/$label/repo/${label}_repo.dart')
-        .create(recursive: true)
-        .then((File file) async {
-      await file.writeAsString(repo);
-      // Stuff to do after file has been created...
-    });
+    createFile('lib/$label/repo/${label}_repo.dart', repo);
   }
 
   void createModule(String? label) {
@@ -330,12 +276,7 @@ class ${name}Module{
 }
     ''';
 
-    File('lib/$label/di/${label}_module.dart')
-        .create(recursive: true)
-        .then((File file) async {
-      await file.writeAsString(module);
-      // Stuff to do after file has been created...
-    });
+    createFile('lib/$label/di/${label}_module.dart', module);
   }
 
   void createUi(String? label) {
@@ -360,11 +301,7 @@ class _${name}PageState extends State<${name}Page> {
 
     """;
 
-    File('lib/$label/ui/${label}_page.dart')
-        .create(recursive: true)
-        .then((File file) async {
-      await file.writeAsString(mainPage);
-    });
+    createFile('lib/$label/ui/${label}_page.dart', mainPage);
   }
 
   void createBaseFiles() async {
@@ -453,48 +390,30 @@ abstract class BaseMapper<T, V> {
 
   ''';
 
-    final checkBaseEvent =
-    await Directory('lib/base/base_event.dart').exists();
+    final checkBaseEvent = await Directory('lib/base/base_event.dart').exists();
     final checkUiState =
-    await Directory('lib/base/base_ui_state.dart').exists();
+        await Directory('lib/base/base_ui_state.dart').exists();
     final checkBloc = await Directory('lib/base/base_bloc.dart').exists();
     final checkMapper = await Directory('lib/base/base_mapper.dart').exists();
 
     if (!checkBaseEvent) {
-      await File('lib/base/base_event.dart')
-          .create(recursive: true)
-          .then((File file) async {
-        await file.writeAsString(baseEvent);
-      });
+      createFile('lib/base/base_event.dart', baseEvent);
     }
 
     if (!checkUiState) {
-      await File('lib/base/base_ui_state.dart')
-          .create(recursive: true)
-          .then((File file) async {
-        await file.writeAsString(baseUiState);
-      });
+      createFile('lib/base/base_ui_state.dart', baseUiState);
     }
 
     if (!checkBloc) {
-      await File('lib/base/base_bloc.dart')
-          .create(recursive: true)
-          .then((File file) async {
-        await file.writeAsString(baseBloc);
-      });
+      createFile('lib/base/base_bloc.dart', baseBloc);
     }
 
     if (!checkMapper) {
-      await File('lib/base/base_mapper.dart')
-          .create(recursive: true)
-          .then((File file) async {
-        await file.writeAsString(baseMapper);
-      });
+      createFile('lib/base/base_mapper.dart', 'lib/base/base_mapper.dart');
     }
   }
 
   void createFiles(String name) {
-
     createBloc(name);
     createModel(name);
     createMappers(name);

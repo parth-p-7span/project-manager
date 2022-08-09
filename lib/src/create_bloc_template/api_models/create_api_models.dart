@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'model_constant.dart';
+import 'package:project_manager/src/utils.dart';
 
 class CreateApiModels{
   final String name;
@@ -7,23 +8,13 @@ class CreateApiModels{
   CreateApiModels(this.name);
 
   void createFiles(){
-    File('$name/lib/model/api_models/api_error.dart')
-        .create(recursive: true)
-        .then((File file) async {
-      await file.writeAsString(ModelConstant.apiError);
-    });
 
-    File('$name/lib/model/api_models/api_response.dart')
-        .create(recursive: true)
-        .then((File file) async {
-      await file.writeAsString(ModelConstant.apiResponse);
-    });
+    createFile('$name/lib/model/api_models/api_error.dart', ModelConstant.apiError);
 
-    File('$name/lib/model/api_models/api_status.dart')
-        .create(recursive: true)
-        .then((File file) async {
-      await file.writeAsString(ModelConstant.apiStatus);
-    });
+    createFile('$name/lib/model/api_models/api_response.dart', ModelConstant.apiResponse);
+
+    createFile('$name/lib/model/api_models/api_status.dart', ModelConstant.apiStatus);
+
   }
 
 }
