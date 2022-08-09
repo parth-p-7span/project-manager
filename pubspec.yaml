@@ -1,6 +1,6 @@
 name: project_manager
 description: A CLI tool for creating boilerplate code for project.
-version: 0.0.1-beta.1
+version: 0.0.1-beta.2
 homepage: https://github.com/parthp-7span/project-manager
 
 environment:
