@@ -7,15 +7,13 @@ import 'package:project_manager/src/command_processor.dart';
 import 'package:project_manager/src/utils.dart';
 
 void main(List<String> arguments) {
-  exitCode=0;
+  exitCode = 0;
 
   final ArgResults? argResults = parseArguments(arguments);
   if (argResults == null) return;
 
   CommandProcessor().execute(argResults);
-
 }
-
 
 /// sets up logging for stacktrace and logs.
 void setupLogging() {

@@ -45,7 +45,7 @@ seven create --name feature-chat
 ```
 OR
 ```shell
-seven create -n feature-chat
+seven create -N feature-chat
 ```
 
 ## Contributors
