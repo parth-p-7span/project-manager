@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:interact/interact.dart';
-import 'package:path/path.dart';
 import 'package:project_manager/src/create_bloc_module/bloc_file_generator.dart';
 import 'package:project_manager/src/create_bloc_template/bloc_template_generator.dart';
 import 'package:project_manager/src/create_riverpod_template/riverpod_template_generator.dart';

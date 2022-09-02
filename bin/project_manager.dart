@@ -1,10 +1,8 @@
 import 'dart:io';
 import 'package:args/args.dart';
-import 'package:args/command_runner.dart';
 import 'package:logging/logging.dart';
 import 'package:project_manager/src/args_parser.dart';
 import 'package:project_manager/src/command_processor.dart';
-import 'package:project_manager/src/utils.dart';
 
 void main(List<String> arguments) {
   exitCode = 0;

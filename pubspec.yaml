@@ -1,5 +1,5 @@
 name: project_manager
-description: A CLI tool for creating boilerplate code for project.
+description: project_manager is a CLI tool for creating boilerplate code for the flutter project. It supports BLoC, Riverpod, and MobX state management library. You can create a production-ready boilerplate app with just one command using project_manager.
 version: 0.0.1-beta.2
 homepage: https://github.com/parthp-7span/project-manager
 
