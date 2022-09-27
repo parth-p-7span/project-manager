@@ -5,6 +5,7 @@ import 'package:project_manager/src/constants.dart';
 import 'package:project_manager/src/help_menuals.dart';
 import 'package:project_manager/src/utils.dart';
 import 'package:project_manager/project_manager.dart';
+import 'package:path/path.dart' as p;
 
 class CommandProcessor {
   void execute(ArgResults rootCommand) {
@@ -48,7 +49,12 @@ class CommandProcessor {
       stdout.writeln(HelpManuals.CREATE_HELP);
     } else if (command.arguments.hasArg('name', 'n')) {
       var name = command['name'];
-      Process.runSync('flutter', ['pub', 'add', 'rxdart']);
+
+      var pubspecPath = p.join(Directory.current.path, 'pubspec.yaml');
+      String contents = File(pubspecPath).readAsStringSync();
+      if (!contents.contains('rxdart')) {
+        Process.runSync('flutter', ['pub', 'add', 'rxdart']);
+      }
       Seven.create(name);
       stdout.writeln(Constants.SUCCESS);
     } else {
